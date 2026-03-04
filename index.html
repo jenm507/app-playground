@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #1e2211;
+            --card-bg: #2c3318;
+            --card-border: rgba(188, 189, 139, 0.18);
+            --accent-1: #717744;
+            --accent-2: #bcbd8b;
+            --accent-3: #766153;
+            --text: #eff1ed;
+            --muted: #bcbd8b;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Subtle radial glow background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 20% 20%, rgba(55, 61, 32, 0.6) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 80%, rgba(118, 97, 83, 0.3) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(113, 119, 68, 0.2);
+            color: var(--accent-2);
+            border: 1px solid rgba(188, 189, 139, 0.35);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.3rem 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--accent-2), var(--text));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 3rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 480px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            line-height: 1;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .card-link-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            margin-top: 0.5rem;
+            transition: background 0.2s ease;
+        }
+
+        .card.vision .card-link-label {
+            background: rgba(188, 189, 139, 0.15);
+            color: var(--accent-2);
+        }
+
+        .card.vision:hover .card-link-label {
+            background: rgba(188, 189, 139, 0.28);
+        }
+
+        .card.math .card-link-label {
+            background: rgba(239, 241, 237, 0.1);
+            color: var(--text);
+        }
+
+        .card.math:hover .card-link-label {
+            background: rgba(239, 241, 237, 0.2);
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="badge">✦ App Playground</div>
+        <h1>My Apps</h1>
+        <p class="subtitle">A collection of vibe-coded apps</p>
+
+        <div class="cards">
+            <a class="card vision" href="./vision-practice/" id="vision-practice-link">
+                <div class="card-icon">😉</div>
+                <div class="card-title">Vision Practice</div>
+                <div class="card-desc">Emoji match game for folks with amblyopia</div>
+                <span class="card-link-label">Open App →</span>
+            </a>
+
+            <a class="card math" href="./math-jaws/" id="math-jaws-link">
+                <div class="card-icon">🦈</div>
+                <div class="card-title">Math Jaws</div>
+                <div class="card-desc">Save Amity Island by solving math problems</div>
+                <span class="card-link-label">Open App →</span>
+            </a>
+        </div>
+
+        <footer>jenm507 · GitHub Pages</footer>
+    </div>
+</body>
+
+</html>
