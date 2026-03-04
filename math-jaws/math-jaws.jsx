@@ -1,5 +1,6 @@
-const { useState, useEffect } = React;
-const { Anchor, Zap, Users, Timer, AlertTriangle, Waves } = Lucide; 
+import React, { useState, useEffect } from 'react';
+import { Waves, Anchor, Timer, Zap, AlertTriangle, Users, Volume2 } from 'lucide-react';
+import { createRoot } from 'react-dom/client';
 
 const JawsMathGame = () => {
   const [gameState, setGameState] = useState('menu');
@@ -398,5 +399,6 @@ const JawsMathGame = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
 root.render(<JawsMathGame />);
