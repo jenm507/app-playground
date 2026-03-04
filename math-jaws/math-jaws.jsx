@@ -1,4 +1,5 @@
 const { useState, useEffect } = React;
+const { Anchor, Zap, Users, Timer, AlertTriangle, Waves } = Lucide; 
 
 const JawsMathGame = () => {
   const [gameState, setGameState] = useState('menu');
